@@ -1,0 +1,23 @@
+{
+  "name": "technicaltestviio",
+  "version": "1.0.0",
+  "description": "technical test app",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon -L",
+    "test": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.6",
+    "itrm-tools": "^1.0.46",
+    "jsonwebtoken": "^9.0.2",
+    "swagger-jsdoc": "^6.2.8",
+    "viio-project-tools": "^1.0.36"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
