@@ -11,14 +11,15 @@ router.post("/login", async (req, res) => {
     if (!email || !password)
       return res
         .status(400)
-        .send({ message: "Incomplete fields or wrong name fields" });
+        .send({token: null, message: "Incomplete fields or wrong name fields" });
     const userFound = await userSchema
       .findOne({
         email: email,
       })
       .populate("_id");
 
-    if (!userFound) return res.status(400).json({ message: "User not found" });
+    if (!userFound) return res.status(400).json({ token: null, message: "User not found" });
+
     const matchPassword = await bCrypt.compare(
       req.body.password,
       userFound.password
@@ -39,8 +40,8 @@ router.post("/login", async (req, res) => {
     res.header("auth-token", token).send(response);
   } catch (error) {
     error instanceof Error
-      ? res.status(401).json({ message: error.message })
-      : res.json({ message: error });
+      ? res.status(401).json({ token: null, message: error.message })
+      : res.json({ token: null, message: error });
   }
 });
 

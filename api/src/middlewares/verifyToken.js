@@ -20,7 +20,7 @@ const verifyToken = async (req, res, next) => {
   } catch (error) {
     error instanceof Error
       ? res.status(401).json({ message: error.message })
-      : res.json({ message: error });
+      : res.status(401).json({ message: error });
   }
 };
 

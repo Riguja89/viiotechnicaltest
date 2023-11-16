@@ -14,6 +14,9 @@ router.post("/signup", async (req, res) => {
         .status(400)
         .send({ message: "Incomplete fields or wrong name fields" });
     }
+    if (!/^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/.test(email)) {
+      return res.status(400).send({ message: "Format email wrong" });
+    }
     const userFound = await userSchema.findOne({ email: email });
     if (userFound)
       return res.status(400).send({ message: "User already exists" });
