@@ -5,6 +5,7 @@ export const POST_USER = "POST_USER";
 export const LOG_OUT = "LOG_OUT";
 export const LOG_IN = "LOG_IN";
 export const VERIFY_SESION = "VERIFY_SESION";
+export const SEARCH = "SEARCH";
 
 export const getAllProducts = (token) => (dispatch) => {
   return axios
@@ -70,3 +71,7 @@ export const verifySesion = (token, user) => async (dispatch) => {
         : alert("error en el servidor");
     });
 };
+
+export const searchProd = (toSearch) => (dispatch) => {
+    dispatch({ type: SEARCH, payload: toSearch });
+  };

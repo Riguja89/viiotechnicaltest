@@ -1,7 +1,9 @@
 const initialState = {
   products: [],
+  productsToShow:["pending"],
   user: {},
   logueado: false,
+  estado: "pending"
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -28,6 +30,7 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         products: productos,
+        productsToShow:productos
       };
 
     case "POST_USER":
@@ -37,6 +40,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         user: action.payload.savedUser,
         logueado: true,
+        estado:"verified"
       };
 
     case "LOG_OUT":
@@ -47,6 +51,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         user: {},
         logueado: false,
+        estado:"out"
       };
 
     case "LOG_IN":
@@ -56,6 +61,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         user: action.payload.user,
         logueado: true,
+        estado:"verified"
       };
 
     case "VERIFY_SESION":
@@ -63,6 +69,16 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         user: JSON.parse(action.payload),
         logueado: true,
+        estado:"verified"
+      };
+
+    case "SEARCH":
+      const result = state.products.filter((p) =>
+        p.title.toLowerCase().includes(action.payload.toLowerCase())
+      );
+      return {
+        ...state,
+        productsToShow: result,
       };
     //   case "ADD_TO_COMPRA":
     //     //console.log(action.payload);

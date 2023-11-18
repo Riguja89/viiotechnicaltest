@@ -1,16 +1,19 @@
 import React, {useState} from "react";
 import { useNavigate } from "react-router";
+import { useDispatch} from "react-redux";
+import { searchProd } from "../redux/actions";
 import backArrow from "../images/login/back-arrow.svg";
 import lupa from "../images/search/lupa.svg";
 
 const SearchBar = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const back = () => {
     navigate(-1);
   };
   const search = (e) => {
     e.preventDefault();
-    // dispach(logIn(formData));
+    dispatch(searchProd(formData.search));
   };
   const [formData, setFormData] = useState({
     search: "",
@@ -22,6 +25,7 @@ const SearchBar = () => {
       ...formData,
       [e.target.name]: e.target.value,
     });
+    console.log(formData)
   };
   return (
     <div className="search-bar_container">

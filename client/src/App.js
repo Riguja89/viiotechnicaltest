@@ -1,8 +1,8 @@
 import "./App.scss";
 import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
-import { useDispatch} from "react-redux";
-import { verifySesion } from "./redux/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { verifySesion, logOut } from "./redux/actions";
 import Landing from "./components/Landing";
 import Nav from "./components/Nav";
 import Login from "./components/Login";
@@ -11,14 +11,17 @@ import Products from "./components/Products";
 
 function App() {
   const dispatch = useDispatch();
+  const user = localStorage.getItem("user");
+  const token = localStorage.getItem("token");
+  const state = useSelector((state) => state.estado);
 
   useEffect(() => {
-    const user = localStorage.getItem("user");
-    const token = localStorage.getItem("token");
     if (user && token) {
-     dispatch(verifySesion(token,user));
+      dispatch(verifySesion(token, user));
+    }else{
+      dispatch(logOut())
     }
-  },[dispatch]);
+  }, [dispatch, token, user, state]);
 
   return (
     <React.Fragment>
@@ -28,9 +31,17 @@ function App() {
           path="/"
           element={
             <>
-              <Landing>
-                <Nav />
-              </Landing>
+              {state!=="pending" ? (
+                <>
+                  <Landing>
+                    <Nav />
+                  </Landing>
+                </>
+              ) : (
+                <>
+                  <div>Cargando...</div>
+                </>
+              )}
             </>
           }
         />
