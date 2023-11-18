@@ -1,0 +1,32 @@
+.nav_container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding-top: 2em;
+.button_container{
+    padding: 0.5em;
+    border-radius: 0.6em;
+    color: white;
+    background-color: #C0914C;
+    margin: 0 1.3em;
+    &:hover{
+        background-color: #8d7653;
+    }
+
+    button{
+        color: white;
+        font-size:1.1em;
+        font-weight: 600;
+    }
+}
+
+p{
+    color: white;
+    font-weight: 600;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 0.5rem;
+}
+
+}

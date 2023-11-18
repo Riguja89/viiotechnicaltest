@@ -2,6 +2,7 @@ const { Router } = require("express");
 const userSchema = require("../../models/user");
 const bCrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const verifyToken = require("../../middlewares/verifyToken");
 
 const router = Router();
 
@@ -42,6 +43,16 @@ router.post("/login", async (req, res) => {
     error instanceof Error
       ? res.status(401).json({ token: null, message: error.message })
       : res.json({ token: null, message: error });
+  }
+});
+
+router.get("/verify", verifyToken, async (req, res) => {
+  try {
+    res.status(200).json({message: "user ok"});
+  } catch (error) {
+    error instanceof Error
+      ? res.status(401).json({ message: error.message })
+      : res.json({ message: error });
   }
 });
 

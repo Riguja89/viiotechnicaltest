@@ -1,0 +1,90 @@
+.signup_container {
+    background: rgb(239, 233, 198);
+    background: linear-gradient(
+      90deg,
+      rgba(239, 233, 198, 1) 22%,
+      rgba(192, 145, 76, 1) 78%
+    );
+    height: 100vh;
+    .signup_header {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      padding-top: 1.5rem;
+      .back_container {
+        width: 3rem;
+      }
+      h3 {
+        font-size: large;
+        font-weight: 800;
+      }
+    }
+    .mainnoot_container {
+      width: 100%;
+      margin-top: 2rem;
+      h2 {
+        width: 100%;
+        text-align: center;
+        text-decoration: none;
+        color: black;
+      }
+    }
+    .form_container {
+      width: 100%;
+      margin-top: 2rem;
+  
+      form {
+        width: 70%;
+        margin-left: 15%;
+        display: flex;
+        flex-direction: column;
+        .label_section {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          margin-top: 1.5rem;
+          label {
+            width: 100%;
+            font-weight: bold;
+            font-size: 1rem;
+            input {
+              width: 100%;
+              height: 2rem;
+              border-radius: 0.3rem;
+              border: solid 1px gray;
+              padding-left: 1rem;
+            }
+          }
+          .danger {
+            color: red;
+            font-size: 0.8rem;
+          }
+        }
+        .submit {
+          margin-top: 1rem;
+          text-align: center;
+          height: 2rem;
+          border-radius: 0.3rem;
+          color: white;
+          background-color: black;
+          font-size: 1.1rem;
+          &:hover {
+            font-weight: bold;
+          }
+        }
+      }
+      .shitcher_signup {
+        text-align: center;
+        margin-top: 2rem;
+        .signup {
+          text-decoration: none;
+          color: black;
+          font-weight: bolder;
+          :hover {
+            font-size: large;
+          }
+        }
+      }
+    }
+  }
+  
